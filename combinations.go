@@ -1,3 +1,4 @@
+// Package combinations provides a method to generate all combinations out of a given array.
 package combinations
 
 import (
