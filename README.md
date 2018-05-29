@@ -1,6 +1,9 @@
 # Golang combinations
 
-[![Build Status](https://travis-ci.com/mxschmitt/golang-combinations.svg?token=zmdRXuHyrWEFbXwsbBEN&branch=master)](https://travis-ci.com/mxschmitt/golang-combinations)
+[![GoDoc](https://godoc.org/github.com/mxschmitt/golang-combinations?status.svg)](https://godoc.org/github.com/mxschmitt/golang-combinations)
+[![Build Status](https://travis-ci.com/mxschmitt/golang-combinations.svg?branch=master)](https://travis-ci.com/mxschmitt/golang-combinations)
+[![Coverage Status](https://coveralls.io/repos/github/mxschmitt/golang-combinations/badge.svg?branch=master)](https://coveralls.io/github/mxschmitt/golang-combinations?branch=master)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 This package provides a method to generate all combinations out of a given string array.
 
