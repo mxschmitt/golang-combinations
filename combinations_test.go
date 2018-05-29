@@ -1,11 +1,11 @@
-package permutations
+package combinations
 
 import (
 	"reflect"
 	"testing"
 )
 
-func TestPermutationString(t *testing.T) {
+func TestStringCombinations(t *testing.T) {
 	tt := []struct {
 		name string
 		in   []string
