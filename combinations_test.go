@@ -13,6 +13,11 @@ func TestStringCombinations(t *testing.T) {
 		out  [][]string
 	}{
 		{
+			name: "Empty slice",
+			in:   []string{},
+			out:  [][]string{},
+		},
+		{
 			name: "Single item",
 			in:   []string{"A"},
 			out: [][]string{
