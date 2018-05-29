@@ -5,7 +5,7 @@ import (
 )
 
 func Strings(in []string) [][]string {
-	lenght := len(in)
+	length := len(in)
 	switch lenght {
 	case 0:
 		return [][]string{}
@@ -13,11 +13,11 @@ func Strings(in []string) [][]string {
 		return [][]string{in}
 	}
 
-	maxCount := int(math.Pow(2, float64(lenght)))
+	maxCount := int(math.Pow(2, float64(length)))
 	out := [][]string{}
 	for i := 1; i < maxCount; i++ {
 		item := []string{}
-		for j := 0; j < lenght; j++ {
+		for j := 0; j < length; j++ {
 			if (i & (1 << uint(j))) != 0 {
 				item = append(item, in[j])
 			}
