@@ -4,7 +4,7 @@ import (
 	"math"
 )
 
-func Strings(in []string) [][]string {
+func All(in []string) [][]string {
 	length := len(in)
 	switch length {
 	case 0:
