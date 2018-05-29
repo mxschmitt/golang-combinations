@@ -6,7 +6,7 @@ import (
 
 func Strings(in []string) [][]string {
 	length := len(in)
-	switch lenght {
+	switch length {
 	case 0:
 		return [][]string{}
 	case 1:
