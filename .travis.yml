@@ -1,5 +1,5 @@
 language: go
 before_install:
  - go get github.com/mattn/goveralls
-after_script:
+script:
  - $GOPATH/bin/goveralls -service=travis-ci
