@@ -5,6 +5,7 @@ import (
 	"math"
 )
 
+// All will return all combinations for a given string array
 func All(in []string) [][]string {
 	length := len(in)
 	switch length {
