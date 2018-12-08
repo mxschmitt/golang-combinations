@@ -8,13 +8,6 @@ import (
 // All will return all combinations for a given string array
 func All(in []string) [][]string {
 	length := len(in)
-	switch length {
-	case 0:
-		return [][]string{}
-	case 1:
-		return [][]string{in}
-	}
-
 	maxCount := int(math.Pow(2, float64(length)))
 	out := [][]string{}
 	for i := 1; i < maxCount; i++ {
