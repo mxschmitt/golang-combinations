@@ -15,7 +15,7 @@ func TestStringCombinations(t *testing.T) {
 		{
 			name: "Empty slice",
 			in:   []string{},
-			out:  [][]string{},
+			out:  nil,
 		},
 		{
 			name: "Single item",
