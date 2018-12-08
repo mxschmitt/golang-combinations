@@ -1,14 +1,10 @@
 // Package combinations provides a method to generate all combinations out of a given string array.
 package combinations
 
-import (
-	"math"
-)
-
 // All will return all combinations for a given string array
 func All(in []string) [][]string {
 	length := len(in)
-	maxCount := int(math.Pow(2, float64(length)))
+	maxCount := 1 << uint(length)
 	out := [][]string{}
 	for i := 1; i < maxCount; i++ {
 		item := []string{}
