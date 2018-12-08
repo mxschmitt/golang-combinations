@@ -3,13 +3,13 @@ package combinations
 
 // All will return all combinations for a given string array
 func All(in []string) [][]string {
-	length := len(in)
-	maxCount := 1 << uint(length)
+	length := uint(len(in))
+	maxCount := 1 << length
 	out := [][]string{}
 	for i := 1; i < maxCount; i++ {
 		item := []string{}
-		for j := 0; j < length; j++ {
-			if (i & (1 << uint(j))) != 0 {
+		for j := uint(0); j < length; j++ {
+			if i&(1<<j) != 0 {
 				item = append(item, in[j])
 			}
 		}
