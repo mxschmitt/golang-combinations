@@ -5,54 +5,36 @@
 [![Coverage Status](https://coveralls.io/repos/github/mxschmitt/golang-combinations/badge.svg?branch=master)](https://coveralls.io/github/mxschmitt/golang-combinations?branch=master)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-This package provides a method to generate all ordered combinations out of a given string array using bitshifts.
+This package provides a method to generate all ordered combinations out of a given string array.
+This essentially creates the powerset of the given array except that the empty set is disregarded.
 
 ## Examples
 
-For examples check out the godoc: [here](https://godoc.org/github.com/mxschmitt/golang-combinations/#pkg-examples)
+Take a look at the [godoc](https://godoc.org/github.com/mxschmitt/golang-combinations/#pkg-examples) for examples.
 
 In general when you have e.g. `[]string{"A", "B", "C"}` you will get:
 
 ```json
 [
-    [
-        "A"
-    ],
-    [
-        "B"
-    ],
-    [
-        "A",
-        "B"
-    ],
-    [
-        "C"
-    ],
-    [
-        "A",
-        "C"
-    ],
-    [
-        "B",
-        "C"
-    ],
-    [
-        "A",
-        "B",
-        "C"
-    ]
+    ["A"],
+    ["B"],
+    ["A", "B"],
+    ["C"],
+    ["A", "C"],
+    ["B", "C"],
+    ["A", "B", "C"]
 ]
 ```
 
 ## Background
 
-The algorithm iterates over each number from `1` to `2^length(input)`, separating it by binary components and utilizes the true/false interpretation of binary 0's and 1's to extract all unique ordered combinations of the input slice.
+The algorithm iterates over each number from `1` to `2^length(input)`, separating it by binary components and utilizes the true/false interpretation of binary 1's and 0's to extract all unique ordered combinations of the input slice.
 
 E.g. a binary number `0011` means selecting the first and second index from the slice and ignoring the third and fourth. For input `{"A", "B", "C", "D"}` this signifies the combination `{"A", "B"}`.
 
-For input slice `{"A", "B", "C", "D"}` there are `2^4 - 1 = 15` binary combinations, so mapping each bit position to a slice index and selecting the entry for binary `1` and discarding for binary `0` gives the full set as:
+For input slice `{"A", "B", "C", "D"}` there are `2^4 - 1 = 15` binary combinations, so mapping each bit position to a slice index and selecting the entry for binary `1` and discarding for binary `0` gives the full subset as:
 
-```
+```txt
 1	=	0001	=>	---A	=>	{"A"}
 2	=	0010	=>	--B-	=>	{"B"}
 3	=	0011	=>	--BA	=>	{"A", "B"}
