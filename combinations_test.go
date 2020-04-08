@@ -113,6 +113,7 @@ func TestStringCombinationsN(t *testing.T) {
 			out: [][]string{
 				{"A"},
 				{"B"},
+				{"A", "B"},
 			},
 		},
 		{
@@ -129,6 +130,20 @@ func TestStringCombinationsN(t *testing.T) {
 			n:    2,
 			out: [][]string{
 				{"A", "B"},
+			},
+		},
+		{
+			name: "Three items, n = 0",
+			in:   []string{"A", "B", "C"},
+			n:    0,
+			out: [][]string{
+				{"A"},
+				{"B"},
+				{"A", "B"},
+				{"C"},
+				{"A", "C"},
+				{"B", "C"},
+				{"A", "B", "C"},
 			},
 		},
 		{
