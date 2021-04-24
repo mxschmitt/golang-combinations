@@ -5,8 +5,10 @@ import "math/bits"
 
 // All returns all combinations for a given string array.
 // This is essentially a powerset of the given set except that the empty set is disregarded.
-func All(set []string) (subsets [][]string) {
+func All(set []string, fs ...AddFunction) (subsets [][]string) {
 	length := uint(len(set))
+
+	fLen := len(fs)
 
 	// Go through all possible combinations of objects
 	// from 1 (only first object in subset) to 2^length (all objects in subset)
@@ -21,20 +23,26 @@ func All(set []string) (subsets [][]string) {
 				subset = append(subset, set[object])
 			}
 		}
-		// add subset to subsets
-		subsets = append(subsets, subset)
+
+		if addFunc(subset, fLen, fs...){
+			// add subset to subsets
+			subsets = append(subsets, subset)
+		}
+
 	}
 	return subsets
 }
 
 // Combinations returns combinations of n elements for a given string array.
 // For n < 1, it equals to All and returns all combinations.
-func Combinations(set []string, n int) (subsets [][]string) {
+func Combinations(set []string, n int, fs ...AddFunction) (subsets [][]string) {
 	length := uint(len(set))
 
 	if n > len(set) {
 		n = len(set)
 	}
+
+	fLen := len(fs)
 
 	// Go through all possible combinations of objects
 	// from 1 (only first object in subset) to 2^length (all objects in subset)
@@ -53,8 +61,26 @@ func Combinations(set []string, n int) (subsets [][]string) {
 				subset = append(subset, set[object])
 			}
 		}
-		// add subset to subsets
-		subsets = append(subsets, subset)
+
+		if addFunc(subset, fLen, fs...){
+			// add subset to subsets
+			subsets = append(subsets, subset)
+		}
 	}
 	return subsets
+}
+
+type AddFunction func(subset []string)bool
+
+func addFunc(subset []string, fLen int ,fs ...AddFunction)bool{
+	// add subset to subsets
+	if fLen == 0{
+		return true
+	}
+	for _, f := range fs {
+		if f(subset){
+			return true
+		}
+	}
+	return false
 }
