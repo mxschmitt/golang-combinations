@@ -1,3 +1,3 @@
-module github.com/danielsussa/golang-combinations
+module github.com/mxschmitt/golang-combinations
 
 go 1.15
