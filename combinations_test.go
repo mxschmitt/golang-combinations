@@ -90,6 +90,7 @@ func TestStringCombinationsN(t *testing.T) {
 		name string
 		in   []string
 		n    int
+		fs   []AddFunction
 		out  [][]string
 	}{
 		{
@@ -182,10 +183,37 @@ func TestStringCombinationsN(t *testing.T) {
 				{"A", "B", "C"},
 			},
 		},
+		{
+			name: "Three items, n = 2, not {A,B}",
+			in:   []string{"A", "B", "C"},
+			n:    2,
+			fs: []AddFunction{
+				func(subset []string) bool {
+					return !(subset[0] == "A" && subset[1] == "B")
+				},
+			},
+			out: [][]string{
+				{"A", "C"},
+				{"B", "C"},
+			},
+		},
+		{
+			name: "Three items, n = 2, only {A,B}",
+			in:   []string{"A", "B", "C"},
+			n:    2,
+			fs: []AddFunction{
+				func(subset []string) bool {
+					return subset[0] == "A" && subset[1] == "B"
+				},
+			},
+			out: [][]string{
+				{"A", "B"},
+			},
+		},
 	}
 	for _, tc := range tt {
 		t.Run(tc.name, func(t *testing.T) {
-			out := Combinations(tc.in, tc.n)
+			out := Combinations(tc.in, tc.n, tc.fs...)
 			if !reflect.DeepEqual(out, tc.out) {
 				t.Errorf("error: \nreturn:\t%v\nwant:\t%v", out, tc.out)
 			}
