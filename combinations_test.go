@@ -78,6 +78,78 @@ func TestStringCombinations(t *testing.T) {
 	}
 }
 
+func TestIntegerCombinations(t *testing.T) {
+	tt := []struct {
+		name string
+		in   []int
+		out  [][]int
+	}{
+		{
+			name: "Empty slice",
+			in:   []int{},
+			out:  nil,
+		},
+		{
+			name: "Single item",
+			in:   []int{1},
+			out: [][]int{
+				{1},
+			},
+		},
+		{
+			name: "Two items",
+			in:   []int{1, 2},
+			out: [][]int{
+				{1},
+				{2},
+				{1, 2},
+			},
+		},
+		{
+			name: "Three items",
+			in:   []int{1, 2, 3},
+			out: [][]int{
+				{1},
+				{2},
+				{1, 2},
+				{3},
+				{1, 3},
+				{2, 3},
+				{1, 2, 3},
+			},
+		},
+		{
+			name: "Four items",
+			in:   []int{1, 2, 3, 4},
+			out: [][]int{
+				{1},
+				{2},
+				{1, 2},
+				{3},
+				{1, 3},
+				{2, 3},
+				{1, 2, 3},
+				{4},
+				{1, 4},
+				{2, 4},
+				{1, 2, 4},
+				{3, 4},
+				{1, 3, 4},
+				{2, 3, 4},
+				{1, 2, 3, 4},
+			},
+		},
+	}
+	for _, tc := range tt {
+		t.Run(tc.name, func(t *testing.T) {
+			out := All(tc.in)
+			if !reflect.DeepEqual(out, tc.out) {
+				t.Errorf("error: \nreturn:\t%v\nwant:\t%v", out, tc.out)
+			}
+		})
+	}
+}
+
 func ExampleAll() {
 	combinations := All([]string{"A", "B", "C"})
 	fmt.Println(combinations)
