@@ -1,9 +1,9 @@
-// Package combinations provides a method to generate all combinations out of a given string array.
+// Package combinations provides a method to generate all combinations out of a given generic array.
 package combinations
 
 import "math/bits"
 
-// All returns all combinations for a given string array.
+// All returns all combinations for a given generic array.
 // This is essentially a powerset of the given set except that the empty set is disregarded.
 func All[T any](set []T) (subsets [][]T) {
 	length := uint(len(set))
@@ -27,7 +27,7 @@ func All[T any](set []T) (subsets [][]T) {
 	return subsets
 }
 
-// Combinations returns combinations of n elements for a given string array.
+// Combinations returns combinations of n elements for a given generic array.
 // For n < 1, it equals to All and returns all combinations.
 func Combinations[T any](set []T, n int) (subsets [][]T) {
 	length := uint(len(set))

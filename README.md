@@ -6,7 +6,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/mxschmitt/golang-combinations)](https://goreportcard.com/report/github.com/mxschmitt/golang-combinations)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-This package provides a method to generate all ordered combinations out of a given string array.
+This package provides a method to generate all ordered combinations out of a given generic array.
 This essentially creates the powerset of the given array except that the empty set is disregarded.
 
 ## Examples
