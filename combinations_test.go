@@ -377,6 +377,12 @@ func TestAllWithRepetitionsInt(t *testing.T) {
 		out  [][]int
 	}{
 		{
+			name: "Two items, m = 0",
+			in:   []int{1, 2},
+			m:    0,
+			out:  nil,
+		},
+		{
 			name: "Empty slice",
 			in:   []int{},
 			m:    1,
