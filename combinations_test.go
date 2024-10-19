@@ -413,6 +413,16 @@ func TestAllWithRepetitionsInt(t *testing.T) {
 			},
 		},
 		{
+			name: "Three items, m = 1",
+			in:   []int{1, 2, 3},
+			m:    1,
+			out: [][]int{
+				{1},
+				{2},
+				{3},
+			},
+		},
+		{
 			name: "Three items, m = 2",
 			in:   []int{1, 2, 3},
 			m:    2,
