@@ -27,6 +27,34 @@ func All[T any](set []T) (subsets [][]T) {
 	return subsets
 }
 
+// AllRepeat returns all combinations with repetitions for a given slice,
+// from 1 up to a maximum combination length of m.
+func AllRepeat[T any](set []T, m int) (subsets [][]T) {
+	if m < 1 {
+		return nil
+	}
+
+	var generateCombos func([]T, int)
+	generateCombos = func(current []T, depth int) {
+		if depth == 0 {
+			subset := make([]T, len(current))
+			copy(subset, current)
+			subsets = append(subsets, subset)
+			return
+		}
+
+		for _, item := range set {
+			generateCombos(append(current, item), depth-1)
+		}
+	}
+
+	for length := 1; length <= m; length++ {
+		generateCombos([]T{}, length)
+	}
+
+	return subsets
+}
+
 // Combinations returns combinations of n elements for a given generic array.
 // For n < 1, it equals to All and returns all combinations.
 func Combinations[T any](set []T, n int) (subsets [][]T) {
